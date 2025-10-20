@@ -1,0 +1,7 @@
+{
+  "title": "Dashboard",
+  "welcome": "Welcome, {0} {1} ({2})",
+  "stats": "Total users: {0} | Active users: {1} | Your activities: {2}",
+  "logout": "Sign out",
+  "toggleLang": "EN/ES"
+}

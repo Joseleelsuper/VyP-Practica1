@@ -1,0 +1,7 @@
+{
+  "title": "Panel de control",
+  "welcome": "Bienvenido, {0} {1} ({2})",
+  "stats": "Usuarios totales: {0} | Usuarios activos: {1} | Tus actividades: {2}",
+  "logout": "Cerrar sesión",
+  "toggleLang": "ES/EN"
+}

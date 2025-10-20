@@ -1,0 +1,90 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36603.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica", "Logica\Logica.csproj", "{A5752D5D-5A09-4487-90DE-1C5ABB527534}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{3DE21892-86F4-477F-8C61-4F87605CA380}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "www", "www\", "{0C67B562-8060-8427-74D5-A025B76BB4DB}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
+		ProjectReferences = "{3de21892-86f4-477f-8c61-4f87605ca380}|Database.dll;{A5752D5D-5A09-4487-90DE-1C5ABB527534}|Logica.dll;{c2e02e90-26a9-4c2f-9d6d-ddb7312a26e1}|I18n.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_61371"
+		Debug.AspNetCompiler.PhysicalPath = "www\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_61371\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_61371"
+		Release.AspNetCompiler.PhysicalPath = "www\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_61371\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "61371"
+		SlnRelativePath = "www\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I18n", "I18n\I18n.csproj", "{C2E02E90-26A9-4C2F-9D6D-DDB7312A26E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaTests", "LogicaTests\LogicaTests.csproj", "{5BEF50E2-E894-4F28-A7C1-257C5D383A98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseTests", "DatabaseTests\DatabaseTests.csproj", "{9B0E6A25-5E99-4974-B4C3-E04422438E36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I18nTests", "I18nTests\I18nTests.csproj", "{27AFF310-B32D-4794-AEC6-D9A84E3D3F3B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{D107F4C8-89CC-BEA8-D3D7-CA6B7733353D}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5752D5D-5A09-4487-90DE-1C5ABB527534}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5752D5D-5A09-4487-90DE-1C5ABB527534}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5752D5D-5A09-4487-90DE-1C5ABB527534}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5752D5D-5A09-4487-90DE-1C5ABB527534}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DE21892-86F4-477F-8C61-4F87605CA380}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DE21892-86F4-477F-8C61-4F87605CA380}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DE21892-86F4-477F-8C61-4F87605CA380}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DE21892-86F4-477F-8C61-4F87605CA380}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C67B562-8060-8427-74D5-A025B76BB4DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C67B562-8060-8427-74D5-A025B76BB4DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C67B562-8060-8427-74D5-A025B76BB4DB}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C67B562-8060-8427-74D5-A025B76BB4DB}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{C2E02E90-26A9-4C2F-9D6D-DDB7312A26E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2E02E90-26A9-4C2F-9D6D-DDB7312A26E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2E02E90-26A9-4C2F-9D6D-DDB7312A26E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2E02E90-26A9-4C2F-9D6D-DDB7312A26E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BEF50E2-E894-4F28-A7C1-257C5D383A98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BEF50E2-E894-4F28-A7C1-257C5D383A98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BEF50E2-E894-4F28-A7C1-257C5D383A98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BEF50E2-E894-4F28-A7C1-257C5D383A98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B0E6A25-5E99-4974-B4C3-E04422438E36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B0E6A25-5E99-4974-B4C3-E04422438E36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B0E6A25-5E99-4974-B4C3-E04422438E36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B0E6A25-5E99-4974-B4C3-E04422438E36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27AFF310-B32D-4794-AEC6-D9A84E3D3F3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27AFF310-B32D-4794-AEC6-D9A84E3D3F3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27AFF310-B32D-4794-AEC6-D9A84E3D3F3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27AFF310-B32D-4794-AEC6-D9A84E3D3F3B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {736D9D7F-8911-4742-95FF-049B53AB48BE}
+	EndGlobalSection
+EndGlobal
