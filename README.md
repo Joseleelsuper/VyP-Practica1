@@ -5,7 +5,7 @@ This project is a C# web application for managing users and their physical activ
 ## Cloning the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Joseleelsuper/VyP-Practica1.git
 ```
 
 ## Running the Tests
