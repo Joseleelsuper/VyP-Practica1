@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<telephones>
+  <!-- Normal Tests -->
+  <telf value="644842590" return="1" />
+  <telf value="+34644842590" return="1" />
+  <telf value="0034644842590" return="1" />
+  <telf value="34644842590" return="1" />
+  <telf value="+66644842590" return="0" />
+
+  <telf value="12345" return="0" />
+  <telf value="1234567890" return="0" />
+  <telf value="64484A590" return="0" />
+
+  <telf value="044842590" return="0" />
+  <telf value="144842590" return="0" />
+  <telf value="244842590" return="0" />
+  <telf value="344842590" return="0" />
+
+  <telf value="744842590" return="1" />
+  <telf value="844842590" return="1" />
+  <telf value="944842590" return="1" />
+  <telf value="644842590" return="1" />
+
+  <!-- Edge Cases -->
+  <telf value="" return="0" />
+  <telf null="true" return="0" />
+</telephones>

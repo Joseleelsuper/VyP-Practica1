@@ -88,3 +88,4 @@ _ReSharper*/
 _ReSharper.Caches/
 *.DotSettings.user
 *.ide
+/.codeviz
