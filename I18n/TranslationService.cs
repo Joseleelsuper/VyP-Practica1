@@ -47,11 +47,9 @@ public static class TranslationService
         if (string.IsNullOrEmpty(language)) language = "ES_es";
         lock (_lock)
         {
-            if (string.Equals(_currentLanguage, language, StringComparison.OrdinalIgnoreCase))
-            {
-                return false;
-            }
+            bool same = string.Equals(_currentLanguage, language, StringComparison.OrdinalIgnoreCase);
 
+            // Always (re)load to pick up new/changed strings, even if same language
             _strings = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             _currentLanguage = language;
 
@@ -74,9 +72,9 @@ public static class TranslationService
                     }
                 }
             }
-        }
 
-        return true;
+            return !same; // preserve previous API semantics for callers/tests
+        }
     }
 
     public static string Get(string key)

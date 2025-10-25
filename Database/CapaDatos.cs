@@ -15,7 +15,7 @@ namespace Database
 
         public CapaDatos()
         {
-            tblUsuarios.Add(new User("71478806G", "Juan", "Pérez", "juanp1025@alu.ubu.es", "bWW51KpD?6`@Q0l32b\\x~*rB85;f5@ct", 25, "644842590", Gender.MALE, 75.23f));
+            tblUsuarios.Add(new User("71478806G", "Juan", "Pérez", "juanp1025@alu.ubu.es", "1F_pjCl5QvNhGnXz", 25, "644842590", Gender.MALE, 75.23f));
             tblUsuarios.Add(new User("46541439L", "María", "Gómez", "mariag1002@gmail.com", "*diy9RzFFeHTlHflJ.Ov&I=DC_6.7tWt", 18, "654655368", Gender.FEMALE, 57.1f));
             tblUsuarios.Add(new User("67177373P", "Admin", "Admin", "admin@admin.net", "H+DHwwRcp`D.?X`#pNQy3nrQG0LP1aVa", 99, "644992132", Gender.HELICOPTERO_DE_COMBATE, 999999f) { Role = Role.ADMIN });
             tblActividades.Add(new Activity("Correr", "Carrera matutina en el parque", DateTime.Now, TimeSpan.FromMinutes(30), 1, 5000));
@@ -181,6 +181,41 @@ namespace Database
         public List<Activity> GetTodasActividades()
         {
             return new List<Activity>(tblActividades);
+        }
+
+        // NUEVO: Actualiza los campos de una actividad existente
+        public bool ActualizaActividad(Activity e)
+        {
+            if (e == null) return false;
+            var existente = tblActividades.FirstOrDefault(a => a.Id == e.Id);
+            if (existente == null) return false;
+            if (!tblUsuarios.Any(u => u.Id == e.UserId)) return false;
+
+            existente.Name = e.Name;
+            existente.Description = e.Description;
+            existente.Date = e.Date;
+            existente.Duration = e.Duration;
+            existente.UserId = e.UserId;
+            existente.Distance = e.Distance;
+            return true;
+        }
+
+        // NUEVO: Cambiar estado de usuario (incluye BANNED)
+        public bool CambiaEstadoUsuario(string email, Status nuevoEstado)
+        {
+            var user = LeeUsuario(email);
+            if (user == null) return false;
+            user.Status = nuevoEstado;
+            return true;
+        }
+
+        // NUEVO: Cambiar rol de usuario (USER/ADMIN)
+        public bool CambiaRolUsuario(string email, Role nuevoRol)
+        {
+            var user = LeeUsuario(email);
+            if (user == null) return false;
+            user.Role = nuevoRol;
+            return true;
         }
     }
 }

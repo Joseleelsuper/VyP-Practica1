@@ -121,7 +121,7 @@ namespace Database.Tests
         public void ValidaUsuarioTest()
         {
             // Test case 1: Validar usuario con credenciales correctas
-            bool validUser = capaDatos.ValidaUsuario("juanp1025@alu.ubu.es", "bWW51KpD?6`@Q0l32b\\x~*rB85;f5@ct");
+            bool validUser = capaDatos.ValidaUsuario("juanp1025@alu.ubu.es", "1F_pjCl5QvNhGnXz");
             Assert.IsTrue(validUser);
 
             // Test case 2: Validar usuario con contraseña incorrecta

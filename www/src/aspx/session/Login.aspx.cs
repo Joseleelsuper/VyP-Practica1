@@ -1,9 +1,16 @@
 ﻿using Database;
 using System;
-using System.Data.SqlClient;
+using System.Web.Script.Serialization;
 
 public partial class Login : System.Web.UI.Page
 {
+    private void ShowToast(string type, string title, string message)
+    {
+        var payload = new { type = type, title = title, message = message };
+        var ser = new JavaScriptSerializer();
+        hfToastLogin.Value = ser.Serialize(payload);
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -20,7 +27,7 @@ public partial class Login : System.Web.UI.Page
 
         if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
         {
-            ShowError("Introduce el email y la contraseña.");
+            ShowToast("error", TranslationService.Get("login.toast.error"), TranslationService.Get("login.toast.missing"));
             return;
         }
 
@@ -29,20 +36,14 @@ public partial class Login : System.Web.UI.Page
         {
             Session["userEmail"] = email;
 
-            lblError.Visible = false;
+            ShowToast("success", TranslationService.Get("login.toast.ok"), TranslationService.Get("login.toast.signedIn"));
 
             Response.Redirect("../application/Dashboard.aspx");
         }
         else
         {
-            ShowError("Credenciales inválidas.");
+            ShowToast("error", TranslationService.Get("login.toast.error"), TranslationService.Get("login.toast.invalidCreds"));
         }
-    }
-
-    private void ShowError(string message)
-    {
-        lblError.Text = message;
-        lblError.Visible = true;
     }
 
     protected void btnToggleLangLogin_Click(object sender, EventArgs e)
@@ -55,6 +56,7 @@ public partial class Login : System.Web.UI.Page
         Session["lang"] = lang;
         TranslationService.SetLanguage(lang);
         ApplyTranslations();
+        ShowToast("info", TranslationService.Get("login.toast.info"), TranslationService.Get("login.toast.langChanged"));
     }
 
     private void EnsureLanguage()
@@ -68,6 +70,8 @@ public partial class Login : System.Web.UI.Page
     private void ApplyTranslations()
     {
         litLoginTitle.Text = TranslationService.Get("login.title");
+        lblEmail.Text = TranslationService.Get("login.email");
+        lblPassword.Text = TranslationService.Get("login.password");
         btnLogin.Text = TranslationService.Get("login.signIn");
         btnToggleLangLogin.Text = TranslationService.Get("login.toggleLang");
         litSampleUsers.Text = TranslationService.Get("login.sampleUsers");

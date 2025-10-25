@@ -12,6 +12,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="container">
+            <asp:HiddenField ID="hfToastLogin" runat="server" />
             <div class="card shadow">
                 <h1 class="title"><asp:Literal ID="litLoginTitle" runat="server" /></h1>
                 <asp:Label ID="lblError" runat="server" CssClass="text-danger" Visible="false"></asp:Label>
@@ -29,7 +30,7 @@
                 <div class="sample-users">
                     <span class="muted small" style="margin-right:8px;"><asp:Literal ID="litSampleUsers" runat="server" /></span>
                     <a href="#" class="chip" onclick="return quickLogin('admin@admin.net','H+DHwwRcp`D.?X`#pNQy3nrQG0LP1aVa');"><asp:Literal ID="litSampleAdmin" runat="server" /></a>
-                    <a href="#" class="chip" onclick="return quickLogin('juanp1025@alu.ubu.es','bWW51KpD?6`@Q0l32b\x~*rB85;f5@ct');"><asp:Literal ID="litSampleJuan" runat="server" /></a>
+                    <a href="#" class="chip" onclick="return quickLogin('juanp1025@alu.ubu.es', '1F_pjCl5QvNhGnXz');"><asp:Literal ID="litSampleJuan" runat="server" /></a>
                     <a href="#" class="chip" onclick="return quickLogin('mariag1002@gmail.com','*diy9RzFFeHTlHflJ.Ov&I=DC_6.7tWt');"><asp:Literal ID="litSampleMaria" runat="server" /></a>
                 </div>
                 <div class="actions" style="margin-top:16px;text-align:right;">
@@ -47,6 +48,11 @@
                 try { passInput.focus(); } catch (e) { }
                 return false;
             }
+        </script>
+        <script src="../../js/toast.js"></script>
+        <script src="../../js/toast-hydrator.js"></script>
+        <script type="text/javascript">
+            window.toastHydrator && window.toastHydrator.run('<%= hfToastLogin.ClientID %>');
         </script>
     </form>
 </body>
