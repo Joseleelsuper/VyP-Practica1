@@ -108,5 +108,21 @@ namespace Logica.Utils.Tests
             bool ok = Validate.Telf(telf);
             Assert.AreEqual(expected == 1, ok, $"Telf '{telf}' esperado {expected}");
         }
+
+        [TestMethod]
+        public void PasswordTest()
+        {
+            // Normal Tests
+            Assert.IsTrue(Validate.Password("StrongP@ssw0rd")); // Valid password
+            Assert.IsFalse(Validate.Password("weakpass")); // No uppercase, digit, special char
+            // Edge Cases
+            Assert.IsFalse(Validate.Password("")); // Empty string
+            Assert.IsFalse(Validate.Password(null)); // Null input
+            Assert.IsFalse(Validate.Password("Short1!")); // Too short
+            Assert.IsFalse(Validate.Password("nouppercase1!")); // No uppercase letter
+            Assert.IsFalse(Validate.Password("NOLOWERCASE1!")); // No lowercase letter
+            Assert.IsFalse(Validate.Password("NoDigit!")); // No digit
+            Assert.IsFalse(Validate.Password("NoSpecialChar1")); // No special character
+        }
     }
 }

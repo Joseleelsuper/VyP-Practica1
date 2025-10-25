@@ -7,24 +7,27 @@ public partial class Dashboard : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        // Ensure language every request
+        EnsureLanguage();
+
+        // Enforce authentication on every request (not only first load)
+        var email = Session["userEmail"] as string;
+        if (string.IsNullOrEmpty(email))
+        {
+            Response.Redirect(ResolveUrl("~/src/aspx/session/Login.aspx"));
+            return;
+        }
+
+        var data = DataStore.Instance;
+        var user = data.LeeUsuario(email);
+        if (user == null)
+        {
+            Response.Redirect(ResolveUrl("~/src/aspx/session/Login.aspx"));
+            return;
+        }
+
         if (!IsPostBack)
         {
-            EnsureLanguage();
-            var email = Session["userEmail"] as string;
-            if (string.IsNullOrEmpty(email))
-            {
-                Response.Redirect("Login.aspx");
-                return;
-            }
-
-            var data = DataStore.Instance;
-            var user = data.LeeUsuario(email);
-            if (user == null)
-            {
-                Response.Redirect("Login.aspx");
-                return;
-            }
-
             ApplyTranslations(user, data);
         }
     }
@@ -32,7 +35,7 @@ public partial class Dashboard : System.Web.UI.Page
     protected void btnLogout_Click(object sender, EventArgs e)
     {
         Session["userEmail"] = null;
-        Response.Redirect("../session/Login.aspx");
+        Response.Redirect(ResolveUrl("~/src/aspx/session/Login.aspx"));
     }
 
     protected void btnToggleLang_Click(object sender, EventArgs e)

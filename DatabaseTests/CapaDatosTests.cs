@@ -38,7 +38,7 @@ namespace Database.Tests
         public void GuardaUsuarioTest()
         {
             // Guardar usuario
-            User user = new User("36609929R", "Test", "User", "test@test.com", "password123", 33, "644992334", Gender.HELICOPTERO_DE_COMBATE, 88f);
+            User user = new User("36609929R", "Test", "User", "test@test.com", "nk2*ewXusq4l5'6~C:QR`CR~$YuGkaRJ", 33, "644992334", Gender.HELICOPTERO_DE_COMBATE, 88f);
 
             bool result = capaDatos.GuardaUsuario(user);
             Assert.IsTrue(result);
@@ -99,7 +99,7 @@ namespace Database.Tests
             Assert.AreEqual(3, count);
 
             // Agregar un usuario y verificar incremento
-            capaDatos.GuardaUsuario(new User("70491648Y", "New", "User", "new@test.com", "password", 33, "+34644842590", Gender.HELICOPTERO_DE_COMBATE, 88f));
+            capaDatos.GuardaUsuario(new User("70491648Y", "New", "User", "new@test.com", "l*5.TRQR7KNui$CgQ1xsi\\C~t/cDq.Z\\", 33, "+34644842590", Gender.HELICOPTERO_DE_COMBATE, 88f));
             int newCount = capaDatos.NumUsuarios();
             Assert.AreEqual(4, newCount);
         }
@@ -121,7 +121,7 @@ namespace Database.Tests
         public void ValidaUsuarioTest()
         {
             // Test case 1: Validar usuario con credenciales correctas
-            bool validUser = capaDatos.ValidaUsuario("juanp1025@alu.ubu.es", "HolaQ_123");
+            bool validUser = capaDatos.ValidaUsuario("juanp1025@alu.ubu.es", "bWW51KpD?6`@Q0l32b\\x~*rB85;f5@ct");
             Assert.IsTrue(validUser);
 
             // Test case 2: Validar usuario con contraseña incorrecta

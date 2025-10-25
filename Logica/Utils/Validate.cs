@@ -91,5 +91,25 @@ namespace Logica.Utils
 
             return true;
         }
+
+        public static bool Password(string password)
+        {
+            if (string.IsNullOrWhiteSpace(password) || password.Length < 12)
+            {
+                return false;
+            }
+            bool tieneMayuscula = false;
+            bool tieneMinuscula = false;
+            bool tieneNumero = false;
+            bool tieneCaracterEspecial = false;
+            foreach (char c in password)
+            {
+                if (char.IsUpper(c)) tieneMayuscula = true;
+                else if (char.IsLower(c)) tieneMinuscula = true;
+                else if (char.IsDigit(c)) tieneNumero = true;
+                else if (!char.IsLetterOrDigit(c)) tieneCaracterEspecial = true;
+            }
+            return tieneMayuscula && tieneMinuscula && tieneNumero && tieneCaracterEspecial;
+        }
     }
 }

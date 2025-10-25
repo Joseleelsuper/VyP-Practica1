@@ -17,13 +17,14 @@ namespace Tests
             Assert.Throws<ArgumentException>(() => PasswordHasher.HashPassword(null));
             Assert.Throws<ArgumentException>(() => PasswordHasher.HashPassword(""));
 
-            Assert.IsNotNull(PasswordHasher.HashPassword("password123"));
+            Assert.IsNotNull(PasswordHasher.HashPassword("7j4Ew+=hl\\m7H=k|6S^SuG0fbB@#W$3U"));
         }
 
         [TestMethod()]
         public void VerifyPasswordTest()
         {
-            Assert.IsTrue(PasswordHasher.VerifyPassword("password123", PasswordHasher.HashPassword("password123")));
+            Assert.IsTrue(PasswordHasher.VerifyPassword("7j4Ew+=hl\\m7H=k|6S^SuG0fbB@#W$3U", PasswordHasher.HashPassword("7j4Ew+=hl\\m7H=k|6S^SuG0fbB@#W$3U")));
+            Assert.IsFalse(PasswordHasher.VerifyPassword("7j4Ew+=hl\\m7H=k|6S^SuG0fbB@#W$3U", PasswordHasher.HashPassword("7j4Ew+=hl\\m7H=k|6S^SuG0fB@#W$3U")));
         }
     }
 }

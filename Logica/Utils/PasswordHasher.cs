@@ -16,6 +16,11 @@ namespace Logica.Utils
                 throw new ArgumentException("La contraseña no puede ser nula o vacía.", nameof(password));
             }
 
+            if (!Validate.Password(password))
+            {
+                throw new ArgumentException("La contraseña no cumple con los requisitos de seguridad.", nameof(password));
+            }
+
             // Generar un salt aleatorio
             byte[] salt = new byte[16];
             using (var rng = new RNGCryptoServiceProvider())
@@ -50,8 +55,12 @@ namespace Logica.Utils
 
             // Comparar los hashes
             for (int i = 0; i < 20; i++)
+            {
                 if (hashBytes[i + 16] != hash[i])
+                {
                     return false;
+                }
+            }
 
             return true;
         }
