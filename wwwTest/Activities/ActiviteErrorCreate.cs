@@ -37,8 +37,12 @@ namespace wwwTest.Activities
         [TestMethod]
         public void TheActiviteErrorCreateTest()
         {
+            driver.Navigate().GoToUrl("http://localhost:61371/src/aspx/session/Login.aspx");
+            driver.FindElement(By.LinkText("Admin")).Click();
+            driver.FindElement(By.Id("btnLogin")).Click();
             driver.Navigate().GoToUrl("http://localhost:61371/src/aspx/application/Dashboard.aspx");
             driver.FindElement(By.Id("btnAddActivity")).Click();
+
         }
     }
 }

@@ -1,11 +1,7 @@
 using System;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Edge;
 
 namespace wwwTest.Login
 {
@@ -13,15 +9,11 @@ namespace wwwTest.Login
     public class LoginUserJuan
     {
         private static IWebDriver driver;
-        private StringBuilder verificationErrors;
-        private static string baseURL;
-        private bool acceptNextAlert = true;
         
         [ClassInitialize]
         public static void InitializeClass(TestContext testContext)
         {
-            driver = new FirefoxDriver();
-            baseURL = "https://www.google.com/";
+            driver = new EdgeDriver();
         }
         
         [ClassCleanup]
@@ -29,7 +21,6 @@ namespace wwwTest.Login
         {
             try
             {
-                //driver.Quit();// quit does not close the window
                 driver.Close();
                 driver.Dispose();
             }
@@ -39,18 +30,6 @@ namespace wwwTest.Login
             }
         }
         
-        [TestInitialize]
-        public void InitializeTest()
-        {
-            verificationErrors = new StringBuilder();
-        }
-        
-        [TestCleanup]
-        public void CleanupTest()
-        {
-            Assert.AreEqual("", verificationErrors.ToString());
-        }
-        
         [TestMethod]
         public void TheLoginUserJuanTest()
         {
@@ -58,46 +37,8 @@ namespace wwwTest.Login
             driver.FindElement(By.LinkText("Juan")).Click();
             driver.FindElement(By.Id("btnLogin")).Click();
             driver.Navigate().GoToUrl("http://localhost:61371/src/aspx/application/Dashboard.aspx");
-        }
-        private bool IsElementPresent(By by)
-        {
-            try
-            {
-                driver.FindElement(by);
-                return true;
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }
-        }
-        
-        private bool IsAlertPresent()
-        {
-            try
-            {
-                driver.SwitchTo().Alert();
-                return true;
-            }
-            catch (NoAlertPresentException)
-            {
-                return false;
-            }
-        }
-        
-        private string CloseAlertAndGetItsText() {
-            try {
-                IAlert alert = driver.SwitchTo().Alert();
-                string alertText = alert.Text;
-                if (acceptNextAlert) {
-                    alert.Accept();
-                } else {
-                    alert.Dismiss();
-                }
-                return alertText;
-            } finally {
-                acceptNextAlert = true;
-            }
+            driver.FindElement(By.Id("btnLogout")).Click();
+            driver.Navigate().GoToUrl("http://localhost:61371/src/aspx/session/Login.aspx");
         }
     }
 }
