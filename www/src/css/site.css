@@ -166,6 +166,6 @@ table.grid, table.grid-small {
 .toast.error { border-color: #dc2626; background: #3b0a0a; color: #fecaca; }
 .toast.info { border-color: #2563eb; background: #0a224a; color: #bfdbfe; }
 .toast .title { font-size: 14px; font-weight: 600; margin: 0 0 4px; }
-.toast .message { font-size: 14px; }
+.toast .message { font-size: 14px; white-space: pre-line; }
 @keyframes toast-in { to { opacity: 1; transform: translateY(0); } }
 @keyframes toast-out { to { opacity: 0; transform: translateY(-6px); } }

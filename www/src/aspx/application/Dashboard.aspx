@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../../css/site.css" />
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" autocomplete="off">
         <header class="topbar">
             <div class="brand">Mi App Fitness</div>
             <div class="spacer"></div>
@@ -18,8 +18,8 @@
             <asp:Button ID="btnLogout" runat="server" Text="Cerrar sesión" OnClick="btnLogout_Click" CssClass="btn btn-secondary" />
         </header>
         <main class="container">
-            <asp:HiddenField ID="hfEditingId" runat="server" />
-            <asp:HiddenField ID="hfToast" runat="server" />
+            <asp:HiddenField ID="hfEditingId" runat="server" EnableViewState="false" />
+            <asp:HiddenField ID="hfToast" runat="server" EnableViewState="false" />
             <div class="card shadow">
                 <h1 class="title"><asp:Literal ID="litDashboardTitle" runat="server" /></h1>
                 <asp:Label ID="lblWelcome" runat="server" CssClass="lead" />
@@ -162,6 +162,7 @@
         </main>
         <script src="../../js/toast.js"></script>
         <script src="../../js/toast-hydrator.js"></script>
+        <script src="../../js/clear-on-reload.js"></script>
         <script type="text/javascript">
             window.toastHydrator && window.toastHydrator.run('<%= hfToast.ClientID %>');
         </script>

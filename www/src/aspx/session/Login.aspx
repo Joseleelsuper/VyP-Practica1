@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="../../css/site.css" />
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" autocomplete="off">
         <div class="container">
-            <asp:HiddenField ID="hfToastLogin" runat="server" />
+            <asp:HiddenField ID="hfToastLogin" runat="server" EnableViewState="false" />
             <div class="card shadow">
                 <h1 class="title"><asp:Literal ID="litLoginTitle" runat="server" /></h1>
                 <asp:Label ID="lblError" runat="server" CssClass="text-danger" Visible="false"></asp:Label>
@@ -51,6 +51,7 @@
         </script>
         <script src="../../js/toast.js"></script>
         <script src="../../js/toast-hydrator.js"></script>
+        <script src="../../js/clear-on-reload.js"></script>
         <script type="text/javascript">
             window.toastHydrator && window.toastHydrator.run('<%= hfToastLogin.ClientID %>');
         </script>

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web.UI; // for DataBinder
 using System.Web.UI.WebControls;
 using System.Web.Script.Serialization;
+using System.Collections.Generic;
 
 public partial class Dashboard : System.Web.UI.Page
 {
@@ -267,10 +268,37 @@ public partial class Dashboard : System.Web.UI.Page
         var me = data.LeeUsuario(Session["userEmail"] as string);
         if (me == null || me.Role != Role.ADMIN) return;
 
+        var errors = new System.Collections.Generic.List<string>();
+        string nif = txtNewNif.Text;
+        string name = txtNewName.Text;
+        string surname = txtNewSurname.Text;
+        string email = txtNewEmail.Text;
+        string password = txtNewPassword.Text;
+        string telf = txtNewTelf.Text;
+
+        if (string.IsNullOrWhiteSpace(name)) errors.Add(TranslationService.Get("dashboard.user.validation.nameRequired"));
+        if (string.IsNullOrWhiteSpace(surname)) errors.Add(TranslationService.Get("dashboard.user.validation.surnameRequired"));
+        if (!Logica.Utils.Validate.NIF(nif)) errors.Add(TranslationService.Get("dashboard.user.validation.nifInvalid"));
+        if (!Logica.Utils.Validate.Email(email)) errors.Add(TranslationService.Get("dashboard.user.validation.emailInvalid"));
+        if (!Logica.Utils.Validate.Telf(telf)) errors.Add(TranslationService.Get("dashboard.user.validation.telfInvalid"));
+        if (!Logica.Utils.Validate.Password(password)) errors.Add(TranslationService.Get("dashboard.user.validation.passwordInvalid"));
+        if (data.LeeUsuario(email) != null) errors.Add(TranslationService.Get("dashboard.user.validation.emailExists"));
+        if (data.GetUsuarios().Any(u => u.NIF == nif)) errors.Add(TranslationService.Get("dashboard.user.validation.nifExists"));
+
+        if (errors.Count > 0)
+        {
+            ShowToast("error", TranslationService.Get("dashboard.toast.error"), string.Join("\n", errors.ToArray()));
+            return;
+        }
+
         try
         {
-            var newUser = new User(txtNewNif.Text, txtNewName.Text, txtNewSurname.Text, txtNewEmail.Text, txtNewPassword.Text, 18, txtNewTelf.Text, Gender.NOT_SPECIFIED, 70f);
-            data.GuardaUsuario(newUser);
+            var newUser = new User(nif, name, surname, email, password, 18, telf, Gender.NOT_SPECIFIED, 70f);
+            if (!data.GuardaUsuario(newUser))
+            {
+                ShowToast("error", TranslationService.Get("dashboard.toast.error"), TranslationService.Get("dashboard.toast.invalidUser"));
+                return;
+            }
             ShowToast("success", TranslationService.Get("dashboard.toast.ok"), TranslationService.Get("dashboard.toast.userCreated"));
         }
         catch
