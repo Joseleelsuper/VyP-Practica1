@@ -3,5 +3,19 @@
   "welcome": "Bienvenido, {0} {1} ({2})",
   "stats": "Usuarios totales: {0} | Usuarios activos: {1} | Tus actividades: {2}",
   "logout": "Cerrar sesión",
-  "toggleLang": "ES/EN"
+  "toggleLang": "ES/EN",
+
+  "myActivitiesTitle": "Mis actividades",
+  "adminUsersTitle": "Usuarios registrados",
+  "adminActivitiesTitle": "Actividades por usuario",
+
+  "colActivity": "Actividad",
+  "colDate": "Fecha",
+  "colDuration": "Duración",
+  "colDistance": "Distancia",
+  "colName": "Nombre",
+  "colSurname": "Apellidos",
+  "colEmail": "Correo",
+  "colRole": "Rol",
+  "colStatus": "Estado"
 }

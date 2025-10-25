@@ -3,5 +3,19 @@
   "welcome": "Welcome, {0} {1} ({2})",
   "stats": "Total users: {0} | Active users: {1} | Your activities: {2}",
   "logout": "Sign out",
-  "toggleLang": "EN/ES"
+  "toggleLang": "EN/ES",
+
+  "myActivitiesTitle": "My activities",
+  "adminUsersTitle": "Registered users",
+  "adminActivitiesTitle": "Activities by user",
+
+  "colActivity": "Activity",
+  "colDate": "Date",
+  "colDuration": "Duration",
+  "colDistance": "Distance",
+  "colName": "Name",
+  "colSurname": "Surname",
+  "colEmail": "Email",
+  "colRole": "Role",
+  "colStatus": "Status"
 }

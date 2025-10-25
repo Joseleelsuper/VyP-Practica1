@@ -67,7 +67,6 @@ public partial class Login : System.Web.UI.Page
 
     private void ApplyTranslations()
     {
-        // Asignaciones b�sicas; si existe login.json, tomar� valores de ah�
         litLoginTitle.Text = TranslationService.Get("login.title");
         btnLogin.Text = TranslationService.Get("login.signIn");
         btnToggleLangLogin.Text = TranslationService.Get("login.toggleLang");

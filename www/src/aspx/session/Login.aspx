@@ -28,9 +28,9 @@
                 </div>
                 <div class="sample-users">
                     <span class="muted small" style="margin-right:8px;"><asp:Literal ID="litSampleUsers" runat="server" /></span>
-                    <a href="#" class="chip" onclick="return quickLogin('admin@admin.net','AdminQ_123');"><asp:Literal ID="litSampleAdmin" runat="server" /></a>
-                    <a href="#" class="chip" onclick="return quickLogin('juanp1025@alu.ubu.es','HolaQ_123');"><asp:Literal ID="litSampleJuan" runat="server" /></a>
-                    <a href="#" class="chip" onclick="return quickLogin('mariag1002@gmail.com','AdiósQ_123');"><asp:Literal ID="litSampleMaria" runat="server" /></a>
+                    <a href="#" class="chip" onclick="return quickLogin('admin@admin.net','H+DHwwRcp`D.?X`#pNQy3nrQG0LP1aVa');"><asp:Literal ID="litSampleAdmin" runat="server" /></a>
+                    <a href="#" class="chip" onclick="return quickLogin('juanp1025@alu.ubu.es','bWW51KpD?6`@Q0l32b\x~*rB85;f5@ct');"><asp:Literal ID="litSampleJuan" runat="server" /></a>
+                    <a href="#" class="chip" onclick="return quickLogin('mariag1002@gmail.com','*diy9RzFFeHTlHflJ.Ov&I=DC_6.7tWt');"><asp:Literal ID="litSampleMaria" runat="server" /></a>
                 </div>
                 <div class="actions" style="margin-top:16px;text-align:right;">
                     <asp:Button ID="btnToggleLangLogin" runat="server" Text="ES/EN" OnClick="btnToggleLangLogin_Click" CssClass="btn btn-secondary" />
