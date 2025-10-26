@@ -37,8 +37,6 @@ namespace wwwTest.Login
             driver.FindElement(By.LinkText("Juan")).Click();
             driver.FindElement(By.Id("btnLogin")).Click();
             driver.Navigate().GoToUrl("http://localhost:61371/src/aspx/application/Dashboard.aspx");
-            driver.FindElement(By.Id("btnLogout")).Click();
-            driver.Navigate().GoToUrl("http://localhost:61371/src/aspx/session/Login.aspx");
         }
     }
 }
