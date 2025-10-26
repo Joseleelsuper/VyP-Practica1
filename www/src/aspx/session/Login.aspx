@@ -29,7 +29,7 @@
                 </div>
                 <div class="sample-users">
                     <span class="muted small" style="margin-right:8px;"><asp:Literal ID="litSampleUsers" runat="server" /></span>
-                    <a href="#" class="chip" onclick="return quickLogin('admin@admin.net','H+DHwwRcp`D.?X`#pNQy3nrQG0LP1aVa');"><asp:Literal ID="litSampleAdmin" runat="server" /></a>
+                    <a href="#" class="chip" onclick="return quickLogin('admin@admin.net','VCowiF?bEDm5wVJS');"><asp:Literal ID="litSampleAdmin" runat="server" /></a>
                     <a href="#" class="chip" onclick="return quickLogin('juanp1025@alu.ubu.es', '1F_pjCl5QvNhGnXz');"><asp:Literal ID="litSampleJuan" runat="server" /></a>
                     <a href="#" class="chip" onclick="return quickLogin('mariag1002@gmail.com','*diy9RzFFeHTlHflJ.Ov&I=DC_6.7tWt');"><asp:Literal ID="litSampleMaria" runat="server" /></a>
                 </div>

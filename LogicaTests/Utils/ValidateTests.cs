@@ -82,7 +82,6 @@ namespace Logica.Utils.Tests
             Assert.IsFalse(Validate.Email("tory002254.com")); // Missing '@'
         }
 
-        // Duplicate removed below
         public static IEnumerable<object[]> LeerTelfXml()
         {
             var filePath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "DatosTest", "telf.xml"));

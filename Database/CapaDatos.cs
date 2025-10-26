@@ -17,7 +17,7 @@ namespace Database
         {
             tblUsuarios.Add(new User("71478806G", "Juan", "Pérez", "juanp1025@alu.ubu.es", "1F_pjCl5QvNhGnXz", 25, "644842590", Gender.MALE, 75.23f));
             tblUsuarios.Add(new User("46541439L", "María", "Gómez", "mariag1002@gmail.com", "*diy9RzFFeHTlHflJ.Ov&I=DC_6.7tWt", 18, "654655368", Gender.FEMALE, 57.1f));
-            tblUsuarios.Add(new User("67177373P", "Admin", "Admin", "admin@admin.net", "H+DHwwRcp`D.?X`#pNQy3nrQG0LP1aVa", 99, "644992132", Gender.HELICOPTERO_DE_COMBATE, 999999f) { Role = Role.ADMIN });
+            tblUsuarios.Add(new User("67177373P", "Admin", "Admin", "admin@admin.net", "VCowiF?bEDm5wVJS", 99, "644992132", Gender.HELICOPTERO_DE_COMBATE, 999999f) { Role = Role.ADMIN });
             tblActividades.Add(new Activity("Correr", "Carrera matutina en el parque", DateTime.Now, TimeSpan.FromMinutes(30), 1, 5000));
             tblActividades.Add(new Activity("Ciclismo", "Paseo en bicicleta por la ciudad", DateTime.Now, TimeSpan.FromMinutes(45), 3, 15000));
         }

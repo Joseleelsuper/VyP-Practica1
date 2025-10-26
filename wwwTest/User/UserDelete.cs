@@ -37,7 +37,7 @@ namespace wwwTest.User
             driver.FindElement(By.LinkText("Admin")).Click();
             driver.FindElement(By.Id("btnLogin")).Click();
             driver.Navigate().GoToUrl("http://localhost:61371/src/aspx/application/Dashboard.aspx");
-            driver.FindElement(By.Id("gvUsers_btnDeleteUser_3")).Click();
+            driver.FindElement(By.Id("gvUsers_btnDeleteUser_2")).Click();
         }
     }
 }

@@ -9,7 +9,7 @@ public static class TranslationService
     private static readonly object _lock = new object();
     private static string _currentLanguage = null;
     private static Dictionary<string, string> _strings = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-    
+
     private static string ResolveTranslationsPath(string language)
     {
         // If running under ASP.NET, use MapPath
@@ -37,6 +37,38 @@ public static class TranslationService
         return null;
     }
 
+    // Helper: try to resolve and validate a translations directory for a language
+    private static bool TryResolveTranslationsPath(string language, out string path)
+    {
+        path = ResolveTranslationsPath(language);
+        return !string.IsNullOrEmpty(path) && Directory.Exists(path);
+    }
+
+    // Helper: load all JSON translation files from a directory into a dictionary
+    private static Dictionary<string, string> LoadTranslationsFromDirectory(string baseDir)
+    {
+        var result = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        var serializer = new JavaScriptSerializer();
+
+        foreach (var file in Directory.GetFiles(baseDir, "*.json", SearchOption.TopDirectoryOnly))
+        {
+            string prefix = Path.GetFileNameWithoutExtension(file);
+            string json = File.ReadAllText(file);
+            var dict = serializer.Deserialize<Dictionary<string, object>>(json);
+            if (dict == null) continue;
+            foreach (var kv in dict)
+            {
+                if (kv.Value is string value)
+                {
+                    string key = prefix + "." + kv.Key;
+                    result[key] = value;
+                }
+            }
+        }
+
+        return result;
+    }
+
     public static string CurrentLanguage
     {
         get { return _currentLanguage; }
@@ -45,35 +77,26 @@ public static class TranslationService
     public static bool SetLanguage(string language)
     {
         if (string.IsNullOrEmpty(language)) language = "ES_es";
+
         lock (_lock)
         {
             bool same = string.Equals(_currentLanguage, language, StringComparison.OrdinalIgnoreCase);
 
-            // Always (re)load to pick up new/changed strings, even if same language
-            _strings = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-            _currentLanguage = language;
-
-            string baseDir = ResolveTranslationsPath(language);
-            if (string.IsNullOrEmpty(baseDir) || !Directory.Exists(baseDir)) return false;
-
-            var serializer = new JavaScriptSerializer();
-            foreach (var file in Directory.GetFiles(baseDir, "*.json", SearchOption.TopDirectoryOnly))
+            // Resolve translations folder first; do not mutate state if the language is not available
+            if (!TryResolveTranslationsPath(language, out string baseDir))
             {
-                string prefix = Path.GetFileNameWithoutExtension(file);
-                string json = File.ReadAllText(file);
-                var dict = serializer.Deserialize<Dictionary<string, object>>(json);
-                if (dict == null) continue;
-                foreach (var kv in dict)
-                {
-                    if (kv.Value is string value)
-                    {
-                        string key = prefix + "." + kv.Key;
-                        _strings[key] = value;
-                    }
-                }
+                return false;
             }
 
-            return !same; // preserve previous API semantics for callers/tests
+            // Load translations into temporary structure
+            var newStrings = LoadTranslationsFromDirectory(baseDir);
+
+            // Commit only after successful load
+            _strings = newStrings ?? new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            _currentLanguage = language;
+
+            // preserve previous API semantics: return false if setting same language
+            return !same;
         }
     }
 

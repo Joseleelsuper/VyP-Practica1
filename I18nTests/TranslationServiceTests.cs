@@ -20,7 +20,9 @@ namespace Tests
             Assert.AreEqual("EN_en", TranslationService.CurrentLanguage);
 
             Assert.IsFalse(TranslationService.SetLanguage("EN_en")); // Setting the same language should return false
+            Assert.AreEqual("EN_en", TranslationService.CurrentLanguage);
             Assert.IsFalse(TranslationService.SetLanguage("TK_tk"));
+            Assert.AreEqual("EN_en", TranslationService.CurrentLanguage);
         }
     }
 }
